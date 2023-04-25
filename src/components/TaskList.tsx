@@ -18,13 +18,15 @@ export function TaskList() {
   // que deve ser gerado de forma aleatória, title que deve ser um texto e isComplete que deve iniciar como false.
   function handleCreateNewTask() {
     // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
-    let n = Math.floor(Math.random() * 99999)
-    const newTask = {
-      id: n,
-      title: newTaskTitle,
-      isComplete: false
+    if (newTaskTitle.length !== 0){
+      let n = Math.floor(Math.random() * 99999)
+      const newTask = {
+        id: n,
+        title: newTaskTitle,
+        isComplete: false
+      }
+      setTasks([...tasks, newTask])
     }
-    setTasks([...tasks, newTask])
   }
 
   function handleToggleTaskCompletion(id: number) {
